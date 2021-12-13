@@ -6,19 +6,21 @@
 <section id="hero">
     <div class="container">
         <div class="hero-content">
+            {% for person in persons %}
             <div class="hero-content-intro row d-flex justify-content-center">
                 <div class="col col-lg-3 d-flex justify-content-center">
-                    <img class="profile-picture" src="{% static 'images/IMG_1303.jpg' %}" alt="Profile Picture">
+                    <img class="profile-picture" src="{{ person.profile_picture.url }}" alt="Profile Picture">
                 </div>
                 <div class="intro-name-wrapper col col-lg-9">
-                    <h1 class="intro-name">Matthew Mohaghegh</h1>
+                    <h1 class="intro-name">{{ person.name }}</h1>
                 </div>
             </div>
             <hr>
             <div class="hero-content-subsection">
-                <h3>Portfolio Manager</h3>
-                <p>I do a lot of crazy shit with people's money!</p>
+                <h3>{{ person.headline }}</h3>
+                <p>{{ person.description }}</p>
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>

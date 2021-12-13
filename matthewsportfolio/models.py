@@ -1,6 +1,21 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 import uuid
 from ckeditor_uploader.fields import RichTextUploadingField
+
+
+class Person(models.Model):
+    name = models.CharField(max_length=255, default='Matthew Mohaghegh')
+    profile_picture = models.ImageField(null=True, default='static/images/IMG_1303.jpg')
+    headline = models.CharField(max_length=255, default='portfolio Manager')
+    description = models.CharField(max_length=400, default="I do a lot of crazy stuff with people's money!")
+
+    def clean(self):
+        if Person.objects.exists() and not self.pk:
+            raise ValidationError('only one user is allowed')
+
+    def __str__(self):
+        return self.name
 
 class Project(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)

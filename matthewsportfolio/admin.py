@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import Project, Skill, Tag, Message, Endorsement, Comment
-
+from .models import Person, Project, Skill, Tag, Message, Endorsement, Comment
+admin.site.register(Person)
 admin.site.register(Project)
 admin.site.register(Comment)
 admin.site.register(Skill)

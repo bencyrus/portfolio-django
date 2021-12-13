@@ -1,11 +1,12 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from .models import Project, Skill, Tag, Message, Endorsement
+from .models import Project, Skill, Tag, Message, Endorsement, Person
 from .forms import CommentForm, ProjectForm, MessageForm, SkillForm, EndorsementForm
 
 
 
 def HomePage(request):
+    persons = Person.objects.all()
     projects = Project.objects.all()
     detailed_skills = Skill.objects.exclude(description='')
     skills = Skill.objects.filter(description='')
@@ -16,7 +17,7 @@ def HomePage(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Your message was successfully sent!')
-    context = {'projects': projects, 'detailed_skills': detailed_skills, 'skills': skills, 'endorsements': endorsements, 'form': form}
+    context = {'persons': persons, 'projects': projects, 'detailed_skills': detailed_skills, 'skills': skills, 'endorsements': endorsements, 'form': form}
     return render(request, 'base/home.html', context)
 
 def ProjectPage(request, pk):
