@@ -1,0 +1,44 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+<section id="project">
+    <div class="container">
+        <div class="project-image-container">
+            <img src="{{ project.thumbnail.url }}" alt="" class="project-image">
+        </div>
+        <h1>{{ project.title }}</h1>
+        <hr>
+        <p>{{ project.description|safe }}</p>
+        <a href="{% url 'edit-project' project.id %}" class="btn btn-secondary">Edit</a>
+
+        <div class="project-comments-container">
+            <h3>Comments ({{ count }})</h3>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+    
+                {% for field in form %}
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-laber">{{ field.label }}</label>
+                    {{ field }}
+                </div>
+                {% endfor %}
+    
+                <input class="btn btn-secondary" type="submit" value="submit">
+            </form>
+            <hr>
+            {% for comment in comments %}
+            <div class="card">
+                <div class="card-body">
+                    <h5>{{ comment.name }}</h5>
+                    <small>{{ comment.created | timesince }} ago</small>
+                    <hr>
+                    <p>{{ comment.content }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

@@ -1,0 +1,15 @@
+/** -------------------- Project.html -------------------- **/
+/** This file includes styling related to individual project pages **/
+
+
+/** -------------------- Project -------------------- **/
+/** Project container project-image-container **/
+#project .project-image-container{
+    text-align: center;
+}
+
+/** Project container project-image-container project-image **/
+#project .project-image{
+    max-width: 100%;
+    max-height: 90vh;
+}

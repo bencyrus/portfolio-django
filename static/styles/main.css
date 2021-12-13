@@ -1,0 +1,248 @@
+/** --------------- General --------------- **/
+
+
+/** --------------- Navbar Section --------------- **/
+#navigation_bar{
+    background-color: #1F2428;
+    height: 50px;
+}
+
+/** navbar navbar-wrapper **/
+#navigation_bar .navbar-wrapper {
+    align-items: center;
+}
+.nav-link{
+    color: #fff !important;
+}
+
+
+
+/** --------------- Hero --------------- **/
+#hero {
+    background-color: #1F2428;
+    height: 100%;
+    color: #fff;
+    padding-bottom: 80px;
+}
+
+/** hero hero-content **/
+.hero-content {
+    margin: 0 auto;
+    padding-top: 5em;
+}
+
+/** hero hero-content hero-content-intro **/
+.hero-content-intro {
+    display: flex;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3em;
+}
+
+/** hero hero-content hero-content-intro profile-picture **/
+.profile-picture {
+    height: 230px;
+    width: 230px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/** hero hero-content hero-content-intro intro-name-wrapper **/
+@media screen and (max-width: 992px) {
+    .intro-name-wrapper {
+        text-align: center;
+    }
+}
+
+/** hero hero-content hero-content-intro intro-name-wrapper intro-name **/
+.intro-name {
+    font-size: 85px;
+    letter-spacing: .08em;
+    font-weight: 600;
+}
+
+/** hero hero-content hero-content-subsection **/
+.hero-content-subsection h3 {
+    font-size: 65px;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+}
+.hero-content-subsection p {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 200;
+}
+
+/** hero hero-content | width < 576px **/
+@media screen and (max-width: 576px) {
+    .intro-name {
+        font-size: 55px;
+        letter-spacing: .08em;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+    .hero-content-subsection h3 {
+        margin-top: 20px;
+        font-size: 40px !important;
+        text-align: center;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        word-spacing: 0.1em;
+    }
+    .hero-content-subsection p {
+        font-size: 18px !important;
+        text-align: center;
+        font-weight: 200;
+    }
+    .profile-picture {
+        height: 180px;
+        width: 180px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+}
+
+
+/** -------------------- Content -------------------- **/
+/** content project-wrapper **/
+.project-wrapper {
+    display: flex;
+    padding-top: 20px;
+}
+.project-wrapper h3 {
+    padding-top: 8px;
+    text-transform: uppercase;
+}
+
+/** content project-wrapper project-column **/
+.project-column {
+    width: 300px;
+    padding: 20px 0;
+}
+
+/** content project-wrapper project-column project-thumbnail **/
+.project-thumbnail {
+    width: 100%;
+}
+
+/** content project-wrapper project-column project-body **/
+.project-body {
+    background-color: #fff;
+    padding: 1em;
+}
+
+/** content project-wrapper project-column project-body technology-used-container **/
+.technology-used-container {
+    font-size: 12px;
+    display: flex;
+    gap: 0.5em;
+}
+.technology-used-tag {
+    background-color: #C4E7F2;
+    width: fit-content;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+@media screen and (max-width: 992px) {
+    .technology-used-tag {
+        font-size: 10px;
+        background-color: #C4E7F2;
+        width: fit-content;
+        padding: 3px 5px;
+        border-radius: 20px;
+    }
+}
+
+/** content about me **/
+.about-me {
+    padding-top: 20px;
+}
+
+
+
+/** -------------------- Skills -------------------- **/
+#skills {
+    background-color: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+@media screen and (min-width: 992px) {
+    #skills .container {
+        padding: 0 250px;
+    }
+}
+
+/** skills skills-container **/
+.skills-container {
+    padding-top: 12px;
+}
+
+
+/** skills skills-container skills-wrapper **/
+.skill-wrapper {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+@media screen and (min-width: 992px) {
+    .skill-wrapper {
+        display: flex;
+        gap: 2em;
+    }
+}
+@media screen and (max-width: 992px) {
+    .skill-wrapper {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    .skill-wrapper img, .skill-wrapper h5 {
+        margin-bottom: 20px;
+    }
+}
+
+
+
+/** skills skills-container skills-wrapper skill-logo **/
+.skill-logo{
+    max-width: 60px;
+    max-height: 60px;
+    /* margin-right: 2em; */
+}
+
+/** skills skills-container other-skills-container **/
+.other-skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+/** skills skills-container other-skills-container skill-tag **/
+.skill-tag {
+    background-color: #C4E7F2;
+    width: fit-content;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+
+/** -------------------- Endorsements -------------------- **/
+#endorsements {
+    background-color: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/** Endorsements endorsement-container **/
+.skills-container {
+    padding-top: 12px;
+}
+
+/** -------------------- Contact -------------------- **/
+/** contact contact-form **/
+.contact-form{
+    display: block;
+    max-width: 600px;
+    margin: 0 auto;
+}

@@ -1,0 +1,129 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Hero -->
+<section id="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-content-intro row d-flex justify-content-center">
+                <div class="col col-lg-3 d-flex justify-content-center">
+                    <img class="profile-picture" src="{% static 'images/IMG_1303.jpg' %}" alt="Profile Picture">
+                </div>
+                <div class="intro-name-wrapper col col-lg-9">
+                    <h1 class="intro-name">Matthew Mohaghegh</h1>
+                </div>
+            </div>
+            <hr>
+            <div class="hero-content-subsection">
+                <h3>Portfolio Manager</h3>
+                <p>I do a lot of crazy shit with people's money!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Content -->
+<section id="content">
+    <div class="container">
+        <div class="project-wrapper row">
+            <h3>My Projects</h3>
+            <p>Projects that make my journey worthwhile</p>
+            {% for project in projects %}
+            <div class="project-column col-md-4">
+                <a href="{% url 'project' project.id %}"><img class="project-thumbnail" src="{{ project.thumbnail.url }}" alt="Project 1"></a>
+                <div class="project-body">
+                    <h6>{{ project.title }}</h6>
+                    <div class="technology-used-container">
+                        <div class="technology-used-tag">
+                            <span>SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <h3>There are no projects in the database</h3>
+            {% endfor %}
+        </div>
+        <div class="about-me">
+            <h3>More About Me</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis 
+                porro itaque ipsum distinctio, inventore consequuntur nisi quis 
+                tenetur blanditiis illum quod voluptates. Sit odit dolorum aperiam, 
+                deserunt veniam quia aut? Lorem ipsum dolor sit amet consectetur 
+                adipisicing elit. Corrupti alias, exercitationem atque obcaecati 
+                accusantium necessitatibus impedit delectus sequi? Totam ducimus libero 
+                omnis sint modi architecto labore ullam delectus. Accusantium, ex?</p>
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+    <div class="container">
+        <h3>My Skills</h3>
+        <div class="skills-container">
+            {% for detailed_skill in detailed_skills %}
+            <div class="skill-wrapper align-items-center">
+                {% if detailed_skill.logo %}
+                <img class="skill-logo" src="{{ detailed_skill.logo.url }}">
+                {% endif %}
+                <div class="skill-content">
+                    <h5>{{ detailed_skill.title }}</h5>
+                    <p>{{ detailed_skill.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+
+            <h4>Other Skills</h4>
+            <div class="other-skills-container">
+                {% for skill in skills %}
+                <div class="skill-tag">
+                    <span>{{ skill.title }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Endorsements -->
+<section id="endorsements">
+    <div class="container">
+        <h3>Endorsements</h3>
+        <a href="{% url 'add-endorsement' %}" class="btn btn-secondary">Add endorsement</a>
+        <div class="endorsement-container">
+            {% for endorsement in endorsements %}
+            <div class="card">
+                <div class="card-body">
+                    <h5>{{ endorsement.name }}</h5>
+                    <p>{{ endorsement.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form -->
+<section id="contact">
+    <div class="container">
+        <form class="contact-form" method="POST">
+            {% csrf_token %}
+
+            {% for field in form %}
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">{{ field.label }}</label>
+                {{ field }}
+            </div>
+
+            {% endfor %}
+
+            <input class="btn btn-secondary" type="submit" value="submit">
+        </form>
+    </div>
+</section>
+
+{% endblock content %}
