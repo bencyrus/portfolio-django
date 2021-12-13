@@ -20,9 +20,16 @@
                 <h3>{{ person.headline }}</h3>
                 <p>{{ person.description }}</p>
             </div>
+            {% if person.about %}
+            <div class="about-me">
+                <h3>About Me</h3>
+                <div class="about-me-content">{{ person.about }}</div>
+            </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
+    <div class="icon"><img src="static/images/man-right-to-left.png" alt=""></div>
 </section>
 
 <!-- Content -->
@@ -47,7 +54,7 @@
             <h3>There are no projects in the database</h3>
             {% endfor %}
         </div>
-        <div class="about-me">
+        <div class="more-about-me">
             <h3>More About Me</h3>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis 
                 porro itaque ipsum distinctio, inventore consequuntur nisi quis 
