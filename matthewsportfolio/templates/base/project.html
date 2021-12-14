@@ -1,19 +1,33 @@
 {% extends 'base/main.html' %}
 {% load static %}
 {% block content %}
-<section id="project">
+<section id="project" class="pd-top-30 pd-bot-30">
     <div class="container">
         <div class="project-image-container">
             <img src="{{ project.thumbnail.url }}" alt="" class="project-image">
         </div>
-        <h1>{{ project.title }}</h1>
+        <h1 class="pd-top-bot-10">{{ project.title }}</h1>
         <hr>
         <p>{{ project.description|safe }}</p>
+        {% if request.user.is_authenticated %}
         <a href="{% url 'edit-project' project.id %}" class="btn btn-secondary">Edit</a>
+        {% endif %}
 
-        <div class="project-comments-container">
+        <div class="project-comments-container pd-top-30">
             <h3>Comments ({{ count }})</h3>
             <hr>
+            {% for comment in comments %}
+            <div class="card mg-top-10">
+                <div class="card-body">
+                    <h5>{{ comment.name }}</h5>
+                    <small>{{ comment.created | timesince }} ago</small>
+                    <hr>
+                    <p>{{ comment.content }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            <hr>
+            <h3 class="font-bold pd-top-30">Leave a Comment</h3>
             <form method="POST">
                 {% csrf_token %}
     
@@ -26,17 +40,6 @@
     
                 <input class="btn btn-secondary" type="submit" value="submit">
             </form>
-            <hr>
-            {% for comment in comments %}
-            <div class="card">
-                <div class="card-body">
-                    <h5>{{ comment.name }}</h5>
-                    <small>{{ comment.created | timesince }} ago</small>
-                    <hr>
-                    <p>{{ comment.content }}</p>
-                </div>
-            </div>
-            {% endfor %}
         </div>
     </div>
 </section>

@@ -39,7 +39,7 @@ class Project(models.Model):
 class Comment(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    content = models.TextField()
+    comment = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

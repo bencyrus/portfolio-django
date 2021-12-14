@@ -73,5 +73,5 @@ class CommentForm(ModelForm):
         self.fields['name'].widget.attrs.update(
             {'class': 'form-control'})
 
-        self.fields['content'].widget.attrs.update(
+        self.fields['comment'].widget.attrs.update(
             {'class': 'form-control'})

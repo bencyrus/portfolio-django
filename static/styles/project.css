@@ -2,6 +2,10 @@
 /** This file includes styling related to individual project pages **/
 
 
+.pd-top-bot-10 {
+    padding: 10px 0;
+}
+
 /** -------------------- Project -------------------- **/
 /** Project container project-image-container **/
 #project .project-image-container{
@@ -13,3 +17,5 @@
     max-width: 100%;
     max-height: 90vh;
 }
+
+/** Project container project-image-container card **/

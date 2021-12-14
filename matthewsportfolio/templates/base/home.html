@@ -3,7 +3,7 @@
 {% block content %}
 
 <!-- Hero -->
-<section id="hero">
+<section id="hero" class="pd-top-30">
     <div class="container">
         <div class="hero-content">
             {% for person in persons %}
@@ -23,22 +23,21 @@
             {% if person.about %}
             <div class="about-me">
                 <h3 class="font-bold">About Me</h3>
-                <div class="about-me-content">{{ person.about }}</div>
+                <div class="about-me-content"><p>{{ person.about }}</p></div>
             </div>
             {% endif %}
             {% endfor %}
         </div>
     </div>
-    <div class="icon"><img src="static/images/man-right-to-left.png" alt=""></div>
+    <div class="icon"><img src="static/images/man-right-to-left.svg" alt=""></div>
 </section>
 
 {% if projects %}
 <!-- Content -->
 <section id="content">
     <div class="container">
-        <div class="project-wrapper row">
+        <div class="project-wrapper row pd-top-30">
             <h3 class="font-bold">My Projects</h3>
-            <p>Projects that make my journey worthwhile</p>
             {% for project in projects %}
             <div class="project-column col-md-4">
                 <a href="{% url 'project' project.id %}"><img class="project-thumbnail" src="{{ project.thumbnail.url }}" alt="Project 1"></a>
@@ -57,7 +56,7 @@
 <!-- More About ME -->
 {% for person in persons %}
 {% if person.more_about %}
-<section id="more-about-me">
+<section id="more-about-me" class="pd-top-30">
     <div class="container">
         <div class="more-about-me">
             <h3 class="font-bold">More About Me</h3>
@@ -69,7 +68,7 @@
 {% endfor %}
 
 <!-- Skills -->
-<section id="skills">
+<section id="skills" class="pd-top-30">
     <div class="container">
         <h3 class="font-bold">My Skills</h3>
         <div class="skills-container">
@@ -85,7 +84,7 @@
             </div>
             {% endfor %}
 
-            <h3 class="font-bold">My Other Skills</h4>
+            <h3 class="pd-top-30 font-bold">My Other Skills</h4>
             <div class="other-skills-container">
                 {% for skill in skills %}
                 <div class="skill-tag">
@@ -95,11 +94,11 @@
             </div>
         </div>
     </div>
-    <div class="icon"><img src="static/images/man-left-to-right.png" alt=""></div>
+    <div class="icon"><img src="static/images/man-left-to-right.svg" alt=""></div>
 </section>
 
 <!-- Endorsements -->
-<section id="endorsements">
+<section id="endorsements" class="pd-top-30">
     <div class="container">
         <h3 class="font-bold">Endorsements</h3>
         <a href="{% url 'add-endorsement' %}" class="btn btn-secondary">Add endorsement</a>
@@ -118,9 +117,11 @@
 </section>
 
 <!-- Contact Form -->
-<section id="contact">
+<section id="contact" class="pd-top-50">
     <div class="container">
+        
         <form class="contact-form" method="POST">
+            <h3 class="font-bold">I will read your messages!</h3>
             {% csrf_token %}
 
             {% for field in form %}
