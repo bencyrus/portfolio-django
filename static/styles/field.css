@@ -1,0 +1,11 @@
+/** -------------------- field.html -------------------- **/
+/** This file includes styling related to individual field pages **/
+
+#field .field-header {
+    text-align: center;
+}
+
+#field .field-image-container .field-logo {
+    width: 300px;
+    max-width: 50%;
+}

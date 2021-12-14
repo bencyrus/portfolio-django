@@ -192,13 +192,14 @@ h1, h2, h3, h4, h5, p, a {
 }
 
 /** fields field-wrapper field-column field-logo **/
-.field-logo {
+.field-logo-home {
     width: 100%;
 }
 
 /** fields field-wrapper field-column field-body **/
 .field-body {
     padding: 1em;
+    text-align: center;
 }
 
 

@@ -40,7 +40,7 @@
             <h3 class="font-bold">My Fields of Activity</h3>
             {% for field in fields %}
             <div class="field-column col-md-4">
-                <a href="{% url 'field' field.id %}"><img class="field-logo" src="{{ field.logo.url }}" alt="Field 1"></a>
+                <a href="{% url 'field' field.id %}"><img class="field-logo-home" src="{{ field.logo.url }}" alt="Field 1"></a>
                 <div class="field-body">
                     <h6>{{ field.title }}</h6>   
                 </div>

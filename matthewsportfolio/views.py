@@ -25,7 +25,8 @@ def HomePage(request):
 def FieldPage(request, pk):
     field = Field.objects.get(id=pk)
     form = FieldForm()
-    context = {'field': field, 'form': form}
+    projects = field.project_set.all()
+    context = {'field': field, 'form': form, 'projects': projects}
     return render(request, 'base/field.html', context)
 
 def AddField(request):
