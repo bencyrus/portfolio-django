@@ -26,7 +26,7 @@ class Person(models.Model):
             raise ValidationError('only one user is allowed')
 
     def __str__(self):
-        return self.name
+        return self.first_name + ' ' + self.last_name
 
 class Field(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
