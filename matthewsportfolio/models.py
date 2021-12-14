@@ -39,7 +39,7 @@ class Field(models.Model):
 
 class Project(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
-    field = models.ForeignKey(Field, on_delete=models.PROTECT, null=True)
+    field = models.ForeignKey(Field, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=255) 
     thumbnail = models.ImageField(null=True)
     description = RichTextUploadingField()
