@@ -29,16 +29,9 @@ h1, h2, h3, h4, h5, p, a {
     margin-top: 10px;
 }
 
-/** --------------- Navbar Section --------------- **/
-#navigation_bar{
-    /* background-color: #1F2428; */
-    height: 50px;
-}
 
-/** navbar navbar-wrapper **/
-#navigation_bar .navbar-wrapper {
-    align-items: center;
-}
+
+
 /** --------------- Hero --------------- **/
 #hero {
     /* background-color: #1F2428; */
@@ -180,6 +173,38 @@ h1, h2, h3, h4, h5, p, a {
 }
 
 
+
+
+/** -------------------- Fields -------------------- **/
+/** fields field-wrapper **/
+.field-wrapper {
+    display: flex;
+}
+.field-wrapper h3 {
+    padding-top: 8px;
+    text-transform: uppercase;
+}
+
+/** fields field-wrapper field-column **/
+.field-column {
+    width: 300px;
+    padding-top: 20px;
+}
+
+/** fields field-wrapper field-column field-logo **/
+.field-logo {
+    width: 100%;
+}
+
+/** fields field-wrapper field-column field-body **/
+.field-body {
+    padding: 1em;
+}
+
+
+
+
+
 /** -------------------- Content -------------------- **/
 /** content project-wrapper **/
 .project-wrapper {
@@ -207,27 +232,8 @@ h1, h2, h3, h4, h5, p, a {
     padding: 1em;
 }
 
-/** content project-wrapper project-column project-body technology-used-container **/
-.technology-used-container {
-    font-size: 12px;
-    display: flex;
-    gap: 0.5em;
-}
-.technology-used-tag {
-    /* background-color: #C4E7F2; */
-    width: fit-content;
-    padding: 3px 10px;
-    border-radius: 20px;
-}
-@media screen and (max-width: 992px) {
-    .technology-used-tag {
-        font-size: 10px;
-        /* background-color: #C4E7F2; */
-        width: fit-content;
-        padding: 3px 5px;
-        border-radius: 20px;
-    }
-}
+
+
 
 
 
@@ -271,8 +277,6 @@ h1, h2, h3, h4, h5, p, a {
     }
 }
 
-
-
 /** skills skills-container skills-wrapper skill-logo **/
 .skill-logo{
     max-width: 60px;
@@ -300,11 +304,22 @@ h1, h2, h3, h4, h5, p, a {
 }
 
 
+
+
+
+
+
+
 /** -------------------- Endorsements -------------------- **/
 /** Endorsements endorsement-container **/
 .skills-container {
     padding-top: 12px;
 }
+
+
+
+
+
 
 /** -------------------- Contact -------------------- **/
 /** contact contact-form **/

@@ -1,10 +1,23 @@
 from django.forms import ModelForm
-from .models import Endorsement, Project, Message, Skill, Comment
+from .models import Endorsement, Field, Project, Message, Skill, Comment
+
+class FieldForm(ModelForm):
+    class Meta:
+        model = Field
+        fields = ['title', 'logo', 'description']
+
+    def __init__(self, *args, **kwargs):
+        super(FieldForm, self).__init__(*args, **kwargs)
+        self.fields['title'].widget.attrs.update(
+            {'class': 'form-control'})
+
+        self.fields['description'].widget.attrs.update(
+            {'class': 'form-control'})
 
 class ProjectForm(ModelForm):
     class Meta:
         model = Project
-        fields = ['title', 'thumbnail', 'description']
+        fields = ['title', 'thumbnail', 'field', 'description']
 
     def __init__(self, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)

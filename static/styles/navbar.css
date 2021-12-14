@@ -1,0 +1,13 @@
+/** -------------------- navbar.html -------------------- **/
+/** This file includes styling related to navbar **/
+
+/** --------------- Navbar Section --------------- **/
+#navigation_bar{
+    /* background-color: #1F2428; */
+    height: 50px;
+}
+
+/** navbar navbar-wrapper **/
+#navigation_bar .navbar-wrapper {
+    align-items: center;
+}

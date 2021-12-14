@@ -3,8 +3,12 @@ from . import views
 
 urlpatterns = [
     path('', views.HomePage, name='home'),
-    path('project/<str:pk>/', views.ProjectPage, name="project"),
 
+    path('field/<str:pk>/', views.FieldPage, name="field"),
+    path('add-field', views.AddField, name="add-field"),
+    path('edit-field/<str:pk>/', views.EditField, name="edit-field"),
+
+    path('project/<str:pk>/', views.ProjectPage, name="project"),
     path('add-project', views.AddProject, name="add-project"),
     path('edit-project/<str:pk>/', views.EditProject, name="edit-project"),
 

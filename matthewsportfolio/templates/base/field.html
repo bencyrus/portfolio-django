@@ -1,0 +1,18 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+<section id="field" class="pd-top-30 pd-bot-30">
+    <div class="container">
+        <div class="field-image-container">
+            <img src="{{ field.logo.url }}" alt="" class="field-logo">
+        </div>
+        <h1 class="pd-top-bot-10">{{ field.title }}</h1>
+        <hr>
+        <p>{{ field.description|safe }}</p>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'edit-field' field.id %}" class="btn btn-secondary">Edit</a>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock content %}

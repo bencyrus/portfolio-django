@@ -32,6 +32,25 @@
     <div class="icon"><img src="static/images/man-right-to-left.svg" alt=""></div>
 </section>
 
+{% if fields %}
+<!-- Fields -->
+<section id="fields">
+    <div class="container">
+        <div class="field-wrapper row pd-top-30">
+            <h3 class="font-bold">My Fields of Activity</h3>
+            {% for field in fields %}
+            <div class="field-column col-md-4">
+                <a href="{% url 'field' field.id %}"><img class="field-logo" src="{{ field.logo.url }}" alt="Field 1"></a>
+                <div class="field-body">
+                    <h6>{{ field.title }}</h6>   
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
 {% if projects %}
 <!-- Content -->
 <section id="content">
@@ -42,11 +61,9 @@
             <div class="project-column col-md-4">
                 <a href="{% url 'project' project.id %}"><img class="project-thumbnail" src="{{ project.thumbnail.url }}" alt="Project 1"></a>
                 <div class="project-body">
-                    <h6>{{ project.title }}</h6>
-                    
+                    <h6>{{ project.title }}</h6>   
                 </div>
             </div>
-            
             {% endfor %}
         </div>
     </div>

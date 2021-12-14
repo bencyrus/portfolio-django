@@ -18,4 +18,11 @@
     max-height: 90vh;
 }
 
+
+
+/** -------------------- project_form.html -------------------- **/
+/** This file includes styling related to individual project pages **/
 /** Project container project-image-container card **/
+.cke_1 {
+    max-width: 95vw !important;
+}

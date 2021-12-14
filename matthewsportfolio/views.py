@@ -1,12 +1,14 @@
+from django.db.models.fields.files import FieldFile
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from .models import Project, Skill, Tag, Message, Endorsement, Person
-from .forms import CommentForm, ProjectForm, MessageForm, SkillForm, EndorsementForm
+from .models import Field, Project, Skill, Tag, Message, Endorsement, Person
+from .forms import CommentForm, FieldForm, ProjectForm, MessageForm, SkillForm, EndorsementForm
 
 
 
 def HomePage(request):
     persons = Person.objects.all()
+    fields = Field.objects.all()
     projects = Project.objects.all()
     detailed_skills = Skill.objects.exclude(description='')
     skills = Skill.objects.filter(description='')
@@ -17,8 +19,39 @@ def HomePage(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Your message was successfully sent!')
-    context = {'persons': persons, 'projects': projects, 'detailed_skills': detailed_skills, 'skills': skills, 'endorsements': endorsements, 'form': form}
+    context = {'persons': persons, 'fields': fields, 'projects': projects, 'detailed_skills': detailed_skills, 'skills': skills, 'endorsements': endorsements, 'form': form}
     return render(request, 'base/home.html', context)
+
+def FieldPage(request, pk):
+    field = Field.objects.get(id=pk)
+    form = FieldForm()
+    context = {'field': field, 'form': form}
+    return render(request, 'base/field.html', context)
+
+def AddField(request):
+    form = FieldForm()
+
+    if request.method == 'POST':
+        form = FieldForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {'form': form}
+    return render(request, 'base/field_form.html', context)
+
+def EditField(request, pk):
+    field = Field.objects.get(id=pk)
+    form = FieldForm(instance=field)
+
+    if request.method == 'POST':
+        form = FieldForm(request.POST, request.FILES, instance=field)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {'form': form}
+    return render(request, 'base/field_form.html', context)
 
 def ProjectPage(request, pk):
     project = Project.objects.get(id=pk)
