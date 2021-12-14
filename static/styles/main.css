@@ -8,6 +8,9 @@ body {
 h1, h2, h3, h4, h5, p, a {
     color: #62615c !important;
 }
+a {
+    text-decoration: none !important;
+}
 .btn-secondary {
     color: #f8f6e9 !important;
 }
@@ -17,7 +20,7 @@ h1, h2, h3, h4, h5, p, a {
     font-weight: bold;
 }
 .pd-top-30 {
-    padding-top: 30px;
+    padding-top: 30px !important;
 }
 .pd-bot-30 {
     padding-bottom: 30px;
@@ -189,6 +192,10 @@ h1, h2, h3, h4, h5, p, a {
 .field-column {
     width: 300px;
     padding-top: 20px;
+    text-align: center;
+}
+.field-column img {
+    max-width: 300px;
 }
 
 /** fields field-wrapper field-column field-logo **/
@@ -201,7 +208,10 @@ h1, h2, h3, h4, h5, p, a {
     padding: 1em;
     text-align: center;
 }
-
+.field-body a{
+    font-size: 14px;
+    font-weight: bolder;
+}
 
 
 

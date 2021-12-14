@@ -7,7 +7,8 @@ from django.db.models.fields import TextField
 
 
 class Person(models.Model):
-    name = models.CharField(max_length=255, default='Matthew Mohaghegh')
+    first_name = models.CharField(max_length=255, default='Matthew')
+    last_name = models.CharField(max_length=255, default='Mohaghegh')
     profile_picture = models.ImageField(null=True, default='static/images/profile.png')
     headline = models.CharField(max_length=255, default='portfolio Manager')
     description = models.CharField(max_length=400, default="I do a lot of crazy stuff with people's money!")

@@ -12,7 +12,7 @@
                     <img class="profile-picture" src="{{ person.profile_picture.url }}" alt="Profile Picture">
                 </div>
                 <div class="intro-name-wrapper col col-lg-9">
-                    <h1 class="intro-name">{{ person.name }}</h1>
+                    <h1 class="intro-name">{{ person.first_name }} {{ person.last_name }}</h1>
                 </div>
             </div>
             <hr>
@@ -39,12 +39,12 @@
         <div class="field-wrapper row pd-top-30 justify-content-around">
             <h3 class="font-bold">My Fields of Activity</h3>
             {% for field in fields %}
-            <div class="field-column col-md-4">
+            <div class="field-column col-md-4 pd-top-30">
                 <a href="{% url 'field' field.id %}"><img class="field-logo-home" src="{{ field.logo.url }}" alt="Field 1"></a>
                 <div class="field-body">
                     <h6>{{ field.title }}</h6>
                     {% for person in persons %}
-                    <a href="{% url 'field' field.id %}">See {{ person.name }}'s Projects</a>
+                    <a href="{% url 'field' field.id %}">See {{ person.first_name }}'s {{ field.title }} Projects</a>
                     {% endfor %}   
                 </div>
             </div>
@@ -54,9 +54,9 @@
 </section>
 {% endif %}
 
-{% if projects %}
+<!-- {% if projects %} -->
 <!-- Content -->
-<section id="content">
+<!-- <section id="content">
     <div class="container">
         <div class="project-wrapper row pd-top-30">
             <h3 class="font-bold">My Projects</h3>
@@ -70,8 +70,8 @@
             {% endfor %}
         </div>
     </div>
-</section>
-{% endif %}
+</section> -->
+<!-- {% endif %} -->
 
 <!-- More About ME -->
 {% for person in persons %}
