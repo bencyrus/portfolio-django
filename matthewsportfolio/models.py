@@ -1,7 +1,9 @@
+from typing import Text
 from django.db import models
 from django.core.exceptions import ValidationError
 import uuid
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.db.models.fields import TextField
 
 
 class Person(models.Model):
@@ -25,8 +27,18 @@ class Person(models.Model):
     def __str__(self):
         return self.name
 
+class Field(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+    title = models.CharField(max_length=255)
+    description = models.TextField(null=True, blank=True)
+    logo = models.ImageField(null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
 class Project(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+    field = models.ForeignKey(Field, on_delete=models.PROTECT, null=True)
     title = models.CharField(max_length=255) 
     thumbnail = models.ImageField(null=True)
     description = RichTextUploadingField()

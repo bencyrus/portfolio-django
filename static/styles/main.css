@@ -73,6 +73,7 @@ h1, h2, h3, h4, h5, p, a {
     width: 230px;
     object-fit: cover;
     border-radius: 50%;
+    border: 1px solid #62615c;
 }
 
 /** hero hero-content hero-content-intro intro-name-wrapper **/
