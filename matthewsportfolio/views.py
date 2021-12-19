@@ -1,7 +1,6 @@
-from django.db.models.fields.files import FieldFile
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from .models import Field, Project, Skill, Tag, Message, Endorsement, Person
+from .models import Field, Project, Skill, Message, Endorsement, Person
 from .forms import CommentForm, FieldForm, ProjectForm, MessageForm, SkillForm, EndorsementForm
 
 
@@ -127,6 +126,12 @@ def AddEndorsement(request):
         return redirect('home')
     context = {'form': form}
     return render(request, 'base/endorsement_form.html', context)
+
+def DashboardPage(request):
+    if request.user.is_authenticated:
+        return render(request, 'base/dashboard.html')
+    else:
+        return redirect('../admin/')
 
 def DonationPage(request):
     return render(request, 'base/donation.html')

@@ -1,0 +1,12 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<a href="{% url 'inbox' %}" class="nav-link">Inbox</a>
+<a href="{% url 'add-project' %}" class="nav-link">Add Project</a>
+<a href="{% url 'add-skill' %}" class="nav-link">Add Skill</a>
+<a href="{% url 'add-field' %}" class="nav-link">Add Field</a>
+{% endif %}
+
+{% endblock content %}
