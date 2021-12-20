@@ -13,8 +13,8 @@
         <p>{{ field.description|safe }}</p>
         {% if request.user.is_authenticated %}
         <div class="item-modifications">
-            <a href="{% url 'edit-field' field.id %}" class="btn btn-secondary">Edit</a>
-            <a href="{% url 'delete-field' field.id %}" class="btn btn-secondary">Delete</a>
+            <a href="{% url 'edit-field' field.id %}" class="btn edit-btn">Edit <span class="material-icons">edit</span></a>
+            <a href="{% url 'delete-field' field.id %}" class="btn delete-btn"><span class="material-icons">delete_forever</span></a>
         </div>
         {% endif %}
 
@@ -22,7 +22,7 @@
             <h3 class="font-bold">My Projects</h3>
             {% if request.user.is_authenticated %}
             <div class="add-project">
-                <a href="{% url 'add-project' %}" class="btn btn-secondary">Add Project</a>
+                <a href="{% url 'add-project' %}" class="btn edit-btn">Add Project <span class="material-icons">add</span></a>
             </div>
             {% endif %}
             {% for project in projects %}
@@ -31,9 +31,9 @@
                 <div class="project-body">
                     <h6>{{ project.title }}</h6>
                     <div class="item-modifications">
-                        <a href="{% url 'edit-project' project.id %}" class="btn btn-secondary">Edit</a>
-                        <a href="{% url 'delete-project' project.id %}" class="btn btn-secondary">Delete</a>
-                    </div> 
+                        <a href="{% url 'edit-project' project.id %}" class="btn edit-btn">Edit <span class="material-icons">edit</span></a>
+                        <a href="{% url 'delete-project' project.id %}" class="btn delete-btn"><span class="material-icons">delete_forever</span></a>
+                    </div>
                 </div>
             </div>
             {% endfor %}

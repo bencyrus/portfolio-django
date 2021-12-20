@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <h3 class="font-bold">Add Field</h3>
             <div class="col-12 pd-top-30 text-center">
-                <div class="content mg-10 bg-gray pd-20"><a href="{% url 'add-field' %}" class="nav-link bg-gray">Add Field</a></div>
+                <div class="content mg-10 bg-gray pd-20"><a href="{% url 'add-field' %}" class="btn edit-btn">Add Field <span class="material-icons">add</span></a></div>
             </div>
         </div>
     </div>
@@ -25,8 +25,8 @@
                 <div class="field-body">
                     <h6>{{ field.title }}</h6>
                     <div class="item-modifications">
-                        <a href="{% url 'edit-field' field.id %}" class="btn btn-secondary">Edit</a>
-                        <a href="{% url 'delete-field' field.id %}" class="btn btn-secondary">Delete</a>
+                        <a href="{% url 'edit-field' field.id %}" class="btn edit-btn">Edit <span class="material-icons">edit</span></a>
+                        <a href="{% url 'delete-field' field.id %}" class="btn delete-btn"><span class="material-icons">delete_forever</span></a>
                     </div>
                 </div>
             </div>

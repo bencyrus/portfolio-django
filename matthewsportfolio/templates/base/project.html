@@ -10,8 +10,10 @@
         <hr>
         <p>{{ project.description|safe }}</p>
         {% if request.user.is_authenticated %}
-        <a href="{% url 'edit-project' project.id %}" class="btn btn-secondary">Edit</a>
-        <a href="{% url 'delete-project' project.id %}" class="btn btn-secondary">Delete</a>
+        <div class="item-modifications">
+            <a href="{% url 'edit-project' project.id %}" class="btn edit-btn">Edit <span class="material-icons">edit</span></a>
+            <a href="{% url 'delete-project' project.id %}" class="btn delete-btn"><span class="material-icons">delete_forever</span></a>
+        </div>
         {% endif %}
 
         <div class="project-comments-container pd-top-30">

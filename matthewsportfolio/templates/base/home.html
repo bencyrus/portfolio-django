@@ -54,25 +54,6 @@
 </section>
 {% endif %}
 
-<!-- {% if projects %} -->
-<!-- Content -->
-<!-- <section id="content">
-    <div class="container">
-        <div class="project-wrapper row pd-top-30">
-            <h3 class="font-bold">My Projects</h3>
-            {% for project in projects %}
-            <div class="project-column col-md-4">
-                <a href="{% url 'project' project.id %}"><img class="project-thumbnail" src="{{ project.thumbnail.url }}" alt="Project 1"></a>
-                <div class="project-body">
-                    <h6>{{ project.title }}</h6>   
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section> -->
-<!-- {% endif %} -->
-
 <!-- More About ME -->
 {% for person in persons %}
 {% if person.more_about %}
@@ -121,7 +102,7 @@
 <section id="endorsements" class="pd-top-30">
     <div class="container">
         <h3 class="font-bold">Endorsements</h3>
-        <a href="{% url 'add-endorsement' %}" class="btn btn-secondary">Add endorsement</a>
+        <a href="{% url 'add-endorsement' %}" class="btn edit-btn">Add endorsement</a>
         <div class="endorsement-container">
             {% for endorsement in endorsements %}
             <div class="card">
@@ -139,8 +120,13 @@
 <!-- Contact Form -->
 <section id="contact" class="pd-top-50">
     <div class="container">
-        
-        <form class="contact-form" method="POST">
+        <div class="socialmedia-icons text-center">
+            <a href="https://www.linkedin.com/in/mattmohaghegh/"><i class="fa fa-linkedin-square"></i></a>
+            <a href="https://www.instagram.com/mattmohaghegh/"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:mattmohaghegh@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+15878324402"><i class="fas fa-mobile-alt"></i></a>
+        </div>
+        <form class="contact-form pd-top-30" method="POST">
             <h3 class="font-bold">I will read your messages!</h3>
             {% csrf_token %}
 
@@ -153,7 +139,7 @@
 
             {% endfor %}
 
-            <input class="btn btn-secondary" type="submit" value="submit">
+            <input class="btn edit-btn" type="submit" value="submit">
         </form>
     </div>
 </section>

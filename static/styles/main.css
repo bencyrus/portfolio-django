@@ -4,6 +4,7 @@ body {
     font-family: 'Menlo', sans-serif !important;
     color: #62615c !important;
     background-color: #f8f6e9 !important;
+    padding-bottom: 30px;
 }
 h1, h2, h3, h4, h5, p, a {
     color: #62615c !important;
@@ -19,6 +20,19 @@ a {
 .font-bold {
     font-weight: bold;
 }
+.delete-btn {
+    color: #f8f6e9 !important;
+    background-color: #a32222 !important;
+}
+.btn span {
+    font-size: 20px;
+    vertical-align: sub;
+}
+.edit-btn {
+    color: #f8f6e9 !important;
+    background-color: #62615c !important;
+}
+
 .pd-20 {
     padding: 20px;
 }
@@ -353,4 +367,7 @@ a {
     display: block;
     max-width: 600px;
     margin: 0 auto;
+}
+.socialmedia-icons {
+    font-size: 60px;
 }
