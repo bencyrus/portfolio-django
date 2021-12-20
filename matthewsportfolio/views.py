@@ -46,11 +46,10 @@ def ProjectManagementPage(request):
     return render(request, 'base/project_management.html', context)
 
 def SkillManagementPage(request):
-    fields = Field.objects.all()
     detailed_skills = Skill.objects.exclude(description='')
     skills = Skill.objects.filter(description='')
 
-    context = {'fields': fields, 'detailed_skills': detailed_skills, 'skills': skills}
+    context = { 'detailed_skills': detailed_skills, 'skills': skills}
     return render(request, 'base/skill_management.html', context)
 
 #--------------- User Profile views ---------------#

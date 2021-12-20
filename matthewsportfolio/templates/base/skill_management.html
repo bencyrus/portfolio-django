@@ -28,8 +28,8 @@
                     <h5>{{ detailed_skill.title }}</h5>
                     <p>{{ detailed_skill.description }}</p>
                     <div class="item-modifications">
-                        <a href="{% url 'edit-skill' detailed_skill.id %}" class="btn btn-secondary">Edit</a>
-                        <a href="{% url 'delete-skill' detailed_skill.id %}" class="btn btn-secondary">Delete</a>
+                        <a href="{% url 'edit-skill' detailed_skill.id %}" class="btn edit-btn">Edit <span class="material-icons">edit</span></a>
+                        <a href="{% url 'delete-skill' detailed_skill.id %}" class="btn delete-btn"><span class="material-icons">delete_forever</span></a>
                     </div>
                 </div>
             </div>
@@ -42,9 +42,9 @@
                     <div class="skill-tag">
                         <span>{{ skill.title }}</span>
                     </div>
-                    <div class="item-modifications">
-                        <a href="{% url 'edit-skill' skill.id %}" class="btn btn-secondary">Edit</a>
-                        <a href="{% url 'delete-skill' skill.id %}" class="btn btn-secondary">Delete</a>
+                    <div class="item-modifications mg-top-10">
+                        <a href="{% url 'edit-skill' skill.id %}" class="btn edit-btn"><span class="material-icons">edit</span></a>
+                        <a href="{% url 'delete-skill' skill.id %}" class="btn delete-btn"><span class="material-icons">delete_forever</span></a>
                     </div>
                 </div>
                 {% endfor %}
