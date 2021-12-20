@@ -1,0 +1,38 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+<section id="field-management">
+    <div class="container pd-top-30">
+        <div class="row justify-content-center">
+            <h3 class="font-bold">Add Field</h3>
+            <div class="col-12 pd-top-30 text-center">
+                <div class="content mg-10 bg-gray pd-20"><a href="{% url 'add-field' %}" class="nav-link bg-gray">Add Field</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="fields">
+    <div class="container pd-top-30">
+        <div class="row justify-content-around">
+            <h3 class="font-bold">Fields of Activity</h3>
+            {% for field in fields %}
+            <div class="field-column col-md-3 pd-top-30">
+                <a href="{% url 'field' field.id %}"><img class="field-logo-home" src="{{ field.logo.url }}" alt="Field 1"></a>
+                <div class="field-body">
+                    <h6>{{ field.title }}</h6>
+                    <div class="item-modifications">
+                        <a href="{% url 'edit-field' field.id %}" class="btn btn-secondary">Edit</a>
+                        <a href="{% url 'delete-field' field.id %}" class="btn btn-secondary">Delete</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

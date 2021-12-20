@@ -49,10 +49,16 @@ def AddField(request):
         form = FieldForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('field-management')
 
     context = {'form': form}
     return render(request, 'base/field_form.html', context)
+
+def DeleteField(request, pk):
+    field = Field.objects.get(id=pk)
+    field.delete()
+
+    return redirect('field-management')
 
 def EditField(request, pk):
     field = Field.objects.get(id=pk)
@@ -62,7 +68,7 @@ def EditField(request, pk):
         form = FieldForm(request.POST, request.FILES, instance=field)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('field-management')
 
     context = {'form': form}
     return render(request, 'base/field_form.html', context)
@@ -149,6 +155,12 @@ def DashboardPage(request):
         return render(request, 'base/dashboard.html', context)
     else:
         return redirect('../admin/')
+
+def FieldManagementPage(request):
+    fields = Field.objects.all()
+
+    context = {'fields': fields}
+    return render(request, 'base/field_management.html', context)
 
 def DonationPage(request):
     return render(request, 'base/donation.html')

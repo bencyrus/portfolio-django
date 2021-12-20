@@ -9,6 +9,7 @@ urlpatterns = [
     path('field/<str:pk>/', views.FieldPage, name="field"),
     path('add-field', views.AddField, name="add-field"),
     path('edit-field/<str:pk>/', views.EditField, name="edit-field"),
+    path('delete-field/<str:pk>/', views.DeleteField, name="delete-field"),
 
     path('project/<str:pk>/', views.ProjectPage, name="project"),
     path('add-project', views.AddProject, name="add-project"),
@@ -21,6 +22,8 @@ urlpatterns = [
     path('add-endorsement', views.AddEndorsement, name="add-endorsement"),
 
     path('dashboard/', views.DashboardPage, name="dashboard"),
+
+    path('field-management/', views.FieldManagementPage, name="field-management"),
 
     path('donation/', views.DonationPage, name="donation"),
 ]
