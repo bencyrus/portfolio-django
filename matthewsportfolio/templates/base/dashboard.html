@@ -2,6 +2,37 @@
 {% load static %}
 {% block content %}
 
+<section id="inbox">
+    <div class="container pd-top-30">
+        <div class="row justify-content-center">
+            <h3 class="font-bold">Inbox</h3>
+            <div class="col-12 pd-top-30 text-center">
+                <div class="content mg-10 bg-gray pd-20"><a href="{% url 'inbox' %}" class="nav-link bg-gray">Inbox {% if unread_count > 0 %}<span class="num-label">({{ unread_count }})</span>{% endif %}</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="content-management">
+    <div class="container pd-top-30">
+        <div class="row justify-content-around">
+            <h3 class="font-bold">Content Management</h3>
+            <div class="col-6 pd-top-30 text-center">
+                <a href="{% url 'edit-profile' %}" class="bg-gray"><div class="content mg-10 bg-gray pd-20">User Profile</div></a>
+            </div>
+            <div class="col-6 pd-top-30 text-center">
+                <a href="{% url 'add-field' %}" class="bg-gray"><div class="content mg-10 bg-gray pd-20">Field Management</div></a>
+            </div>
+            <div class="col-6 pd-top-30 text-center">
+                <a href="{% url 'add-project' %}" class="bg-gray"><div class="content mg-10 bg-gray pd-20">Project Management</div></a>
+            </div>
+            <div class="col-6 pd-top-30 text-center">
+                <a href="{% url 'add-skill' %}" class="bg-gray"><div class="content mg-10 bg-gray pd-20">Skill Management</div></a>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% if request.user.is_authenticated %}
 <a href="{% url 'inbox' %}" class="nav-link">Inbox</a>
 <a href="{% url 'add-project' %}" class="nav-link">Add Project</a>

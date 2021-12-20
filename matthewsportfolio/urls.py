@@ -4,6 +4,8 @@ from . import views
 urlpatterns = [
     path('', views.HomePage, name="home"),
 
+    path('edit-profile', views.UserProfilePage, name="edit-profile"),
+
     path('field/<str:pk>/', views.FieldPage, name="field"),
     path('add-field', views.AddField, name="add-field"),
     path('edit-field/<str:pk>/', views.EditField, name="edit-field"),

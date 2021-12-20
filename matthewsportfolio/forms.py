@@ -1,5 +1,28 @@
+from django.db import models
+from django.db.models import fields
 from django.forms import ModelForm
-from .models import Endorsement, Field, Project, Message, Skill, Comment
+from .models import Endorsement, Field, Project, Message, Skill, Comment, Person
+
+
+class PersonForm(ModelForm):
+    class Meta:
+        model = Person
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(PersonForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'].widget.attrs.update(
+            {'class': 'form-control'})
+        self.fields['last_name'].widget.attrs.update(
+            {'class': 'form-control'})
+        self.fields['headline'].widget.attrs.update(
+            {'class': 'form-control'})
+        self.fields['description'].widget.attrs.update(
+            {'class': 'form-control'})
+        self.fields['about'].widget.attrs.update(
+            {'class': 'form-control'})
+        self.fields['more_about'].widget.attrs.update(
+            {'class': 'form-control'})
 
 class FieldForm(ModelForm):
     class Meta:

@@ -12,11 +12,11 @@ class Person(models.Model):
     profile_picture = models.ImageField(null=True, default='static/images/profile.png')
     headline = models.CharField(max_length=255, default='portfolio Manager')
     description = models.CharField(max_length=400, default="I do a lot of crazy stuff with people's money!")
-    about = models.CharField(max_length=2000, null=True, blank=True, default='Lorem ipsum, dolor sit amet consectetur adipisicing elit. \
+    about = models.TextField(max_length=2000, null=True, blank=True, default='Lorem ipsum, dolor sit amet consectetur adipisicing elit. \
         Officiis porro itaque ipsum distinctio, inventore consequuntur nisi quis tenetur blanditiis illum quod voluptates.\
         Sit odit dolorum aperiam, deserunt veniam quia aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti \
         alias, exercitationem atque obcaecati accusantium necessitatibus impedit delectus sequi?')
-    more_about = models.CharField(max_length=2000, null=True, blank=True, default='Lorem ipsum, dolor sit amet consectetur adipisicing elit. \
+    more_about = models.TextField(max_length=2000, null=True, blank=True, default='Lorem ipsum, dolor sit amet consectetur adipisicing elit. \
         Officiis porro itaque ipsum distinctio, inventore consequuntur nisi quis tenetur blanditiis illum quod voluptates.\
         Sit odit dolorum aperiam, deserunt veniam quia aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti \
         alias, exercitationem atque obcaecati accusantium necessitatibus impedit delectus sequi?')

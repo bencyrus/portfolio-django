@@ -1,0 +1,7 @@
+/** -------------------- dashboard.html -------------------- **/
+/** This file includes styling related to dashboard page **/
+
+#content-management .content {
+    height: 105px;
+    vertical-align: middle;
+}

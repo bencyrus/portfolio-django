@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from .models import Field, Project, Skill, Message, Endorsement, Person
-from .forms import CommentForm, FieldForm, ProjectForm, MessageForm, SkillForm, EndorsementForm
+from .forms import CommentForm, FieldForm, PersonForm, ProjectForm, MessageForm, SkillForm, EndorsementForm
 
 
 
@@ -20,6 +20,20 @@ def HomePage(request):
             messages.success(request, 'Your message was successfully sent!')
     context = {'persons': persons, 'fields': fields, 'projects': projects, 'detailed_skills': detailed_skills, 'skills': skills, 'endorsements': endorsements, 'form': form}
     return render(request, 'base/home.html', context)
+
+def UserProfilePage(request, pk):
+    person = Person.objects.get(id=pk).last()
+    form = PersonForm()
+
+    if request.method == 'POST':
+        form = PersonForm(request.POST, request.FILES, instance=person)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+
+    context = {'form': form}
+    return render(request, 'base/person_form.html', context)
+    
 
 def FieldPage(request, pk):
     field = Field.objects.get(id=pk)
@@ -128,8 +142,11 @@ def AddEndorsement(request):
     return render(request, 'base/endorsement_form.html', context)
 
 def DashboardPage(request):
+    unread_count = Message.objects.filter(is_read=False).count()
+    context = {'unread_count': unread_count}
+
     if request.user.is_authenticated:
-        return render(request, 'base/dashboard.html')
+        return render(request, 'base/dashboard.html', context)
     else:
         return redirect('../admin/')
 
