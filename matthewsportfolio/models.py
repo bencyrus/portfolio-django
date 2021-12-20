@@ -41,7 +41,7 @@ class Project(models.Model):
     field = models.ForeignKey(Field, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=255)
     thumbnail = models.ImageField(null=True)
-    description = RichTextUploadingField()
+    description = RichTextUploadingField(null=True, blank=True)
     slug = models.SlugField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 

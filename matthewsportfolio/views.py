@@ -21,20 +21,6 @@ def HomePage(request):
     context = {'persons': persons, 'fields': fields, 'projects': projects, 'detailed_skills': detailed_skills, 'skills': skills, 'endorsements': endorsements, 'form': form}
     return render(request, 'base/home.html', context)
 
-#--------------- User Profile views ---------------#
-def UserProfilePage(request):
-    person = Person.objects.all().last()
-    form = PersonForm()
-
-    if request.method == 'POST':
-        form = PersonForm(request.POST, request.FILES, instance=person)
-        if form.is_valid():
-            form.save()
-            return redirect('dashboard')
-
-    context = {'form': form}
-    return render(request, 'base/person_form.html', context)
-    
 
 #--------------- Dashboard views ---------------#
 def DashboardPage(request):
@@ -53,6 +39,20 @@ def FieldManagementPage(request):
     return render(request, 'base/field_management.html', context)
 
 
+#--------------- User Profile views ---------------#
+def UserProfilePage(request):
+    person = Person.objects.all().last()
+    form = PersonForm()
+
+    if request.method == 'POST':
+        form = PersonForm(request.POST, request.FILES, instance=person)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+
+    context = {'form': form}
+    return render(request, 'base/person_form.html', context)
+    
 
 #--------------- Field views ---------------#
 def FieldPage(request, pk):
@@ -74,7 +74,7 @@ def AddField(request):
     context = {'form': form}
     return render(request, 'base/field_form.html', context)
 
-def DeleteField(pk):
+def DeleteField(request, pk):
     field = Field.objects.get(id=pk)
     field.delete()
 
@@ -117,12 +117,12 @@ def AddProject(request):
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('dashboard')
 
     context = {'form': form}
     return render(request, 'base/project_form.html', context)
 
-def DeleteProject(pk):
+def DeleteProject(request, pk):
     project = Project.objects.get(id=pk)
     project.delete()
 

@@ -13,6 +13,7 @@ urlpatterns = [
 
     path('project/<str:pk>/', views.ProjectPage, name="project"),
     path('add-project', views.AddProject, name="add-project"),
+    path('delete-project/<str:pk>/', views.DeleteProject, name="delete-project"),
     path('edit-project/<str:pk>/', views.EditProject, name="edit-project"),
 
     path('inbox/', views.InboxPage, name='inbox'),
