@@ -4,7 +4,7 @@ from .models import Field, Project, Skill, Message, Endorsement, Person
 from .forms import CommentForm, FieldForm, PersonForm, ProjectForm, MessageForm, SkillForm, EndorsementForm
 
 
-
+#--------------- HomePage views ---------------#
 def HomePage(request):
     persons = Person.objects.all()
     fields = Field.objects.all()
@@ -21,6 +21,7 @@ def HomePage(request):
     context = {'persons': persons, 'fields': fields, 'projects': projects, 'detailed_skills': detailed_skills, 'skills': skills, 'endorsements': endorsements, 'form': form}
     return render(request, 'base/home.html', context)
 
+#--------------- User Profile views ---------------#
 def UserProfilePage(request):
     person = Person.objects.all().last()
     form = PersonForm()
@@ -35,6 +36,25 @@ def UserProfilePage(request):
     return render(request, 'base/person_form.html', context)
     
 
+#--------------- Dashboard views ---------------#
+def DashboardPage(request):
+    unread_count = Message.objects.filter(is_read=False).count()
+    context = {'unread_count': unread_count}
+
+    if request.user.is_authenticated:
+        return render(request, 'base/dashboard.html', context)
+    else:
+        return redirect('../admin/')
+
+def FieldManagementPage(request):
+    fields = Field.objects.all()
+
+    context = {'fields': fields}
+    return render(request, 'base/field_management.html', context)
+
+
+
+#--------------- Field views ---------------#
 def FieldPage(request, pk):
     field = Field.objects.get(id=pk)
     form = FieldForm()
@@ -54,7 +74,7 @@ def AddField(request):
     context = {'form': form}
     return render(request, 'base/field_form.html', context)
 
-def DeleteField(request, pk):
+def DeleteField(pk):
     field = Field.objects.get(id=pk)
     field.delete()
 
@@ -73,6 +93,8 @@ def EditField(request, pk):
     context = {'form': form}
     return render(request, 'base/field_form.html', context)
 
+
+#--------------- Project views ---------------#
 def ProjectPage(request, pk):
     project = Project.objects.get(id=pk)
     count = project.comment_set.count()
@@ -100,6 +122,12 @@ def AddProject(request):
     context = {'form': form}
     return render(request, 'base/project_form.html', context)
 
+def DeleteProject(pk):
+    project = Project.objects.get(id=pk)
+    project.delete()
+
+    return redirect('field-management')
+
 def EditProject(request, pk):
     project = Project.objects.get(id=pk)
     form = ProjectForm(instance=project)
@@ -113,12 +141,15 @@ def EditProject(request, pk):
     context = {'form': form}
     return render(request, 'base/project_form.html', context)
 
+
+#--------------- Inbox views ---------------#
 def InboxPage(request):
     inbox = Message.objects.all().order_by('is_read')
     unread_count = Message.objects.filter(is_read=False).count()
     context = {'inbox': inbox, 'unread_count': unread_count}
     return render(request, 'base/inbox.html', context)
 
+#--------------- Message views ---------------#
 def MessagePage(request, pk):
     message = Message.objects.get(id=pk)
     message.is_read = True
@@ -126,6 +157,8 @@ def MessagePage(request, pk):
     context = {'message': message}
     return render(request, 'base/message.html', context)
 
+
+#--------------- Skill views ---------------#
 def AddSkill(request):
     form = SkillForm()
     if request.method == 'POST':
@@ -137,6 +170,7 @@ def AddSkill(request):
     return render(request, 'base/skill_form.html', context)
 
 
+#--------------- Endorsement views ---------------#
 def AddEndorsement(request):
     form = EndorsementForm()
     if request.method == 'POST':
@@ -147,20 +181,7 @@ def AddEndorsement(request):
     context = {'form': form}
     return render(request, 'base/endorsement_form.html', context)
 
-def DashboardPage(request):
-    unread_count = Message.objects.filter(is_read=False).count()
-    context = {'unread_count': unread_count}
 
-    if request.user.is_authenticated:
-        return render(request, 'base/dashboard.html', context)
-    else:
-        return redirect('../admin/')
-
-def FieldManagementPage(request):
-    fields = Field.objects.all()
-
-    context = {'fields': fields}
-    return render(request, 'base/field_management.html', context)
-
+#--------------- Donation views ---------------#
 def DonationPage(request):
     return render(request, 'base/donation.html')
