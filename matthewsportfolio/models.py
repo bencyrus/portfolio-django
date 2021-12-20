@@ -8,7 +8,7 @@ from django.db.models.fields import TextField
 class Person(models.Model):
     first_name = models.CharField(max_length=255, default='Matthew')
     last_name = models.CharField(max_length=255, default='Mohaghegh')
-    profile_picture = models.ImageField(null=True, default='static/images/profile.png')
+    profile_picture = models.ImageField(null=True, default='static/images/preload/profile.png')
     headline = models.CharField(max_length=255, default='portfolio Manager')
     description = models.CharField(max_length=400, default="I do a lot of crazy stuff with people's money!")
     about = models.TextField(max_length=2000, null=True, blank=True, default='Lorem ipsum, dolor sit amet consectetur adipisicing elit. \
@@ -19,6 +19,10 @@ class Person(models.Model):
         Officiis porro itaque ipsum distinctio, inventore consequuntur nisi quis tenetur blanditiis illum quod voluptates.\
         Sit odit dolorum aperiam, deserunt veniam quia aut? Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti \
         alias, exercitationem atque obcaecati accusantium necessitatibus impedit delectus sequi?')
+    linkedin = models.CharField(max_length=255, null=True, blank=True, default='https://www.linkedin.com/in/mattmohaghegh/')
+    instagram = models.CharField(max_length=255, null=True, blank=True, default='https://www.instagram.com/mattmohaghegh/')
+    email = models.CharField(max_length=255, null=True, blank=True, default='mailto:mattmohaghegh@gmail.com')
+    phone_number = models.CharField(max_length=255, null=True, blank=True, default='tel:+15878324402')
 
     def clean(self):
         if Person.objects.exists() and not self.pk:

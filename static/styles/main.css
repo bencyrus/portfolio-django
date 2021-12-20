@@ -333,7 +333,8 @@ a {
 
 /** skills skills-container other-skills-container skill-tag **/
 .skill-tag {
-    /* background-color: #C4E7F2; */
+    background-color: #62615c;
+    color: #f8f6e9;
     width: fit-content;
     padding: 3px 10px;
     border-radius: 20px;

@@ -23,6 +23,14 @@ class PersonForm(ModelForm):
             {'class': 'form-control'})
         self.fields['more_about'].widget.attrs.update(
             {'class': 'form-control'})
+        self.fields['linkedin'].widget.attrs.update(
+            {'class': 'form-control'})
+        self.fields['instagram'].widget.attrs.update(
+            {'class': 'form-control'})
+        self.fields['email'].widget.attrs.update(
+            {'class': 'form-control'})
+        self.fields['phone_number'].widget.attrs.update(
+            {'class': 'form-control'})    
 
 class FieldForm(ModelForm):
     class Meta:

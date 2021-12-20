@@ -121,10 +121,12 @@
 <section id="contact" class="pd-top-50">
     <div class="container">
         <div class="socialmedia-icons text-center">
-            <a href="https://www.linkedin.com/in/mattmohaghegh/"><i class="fa fa-linkedin-square"></i></a>
-            <a href="https://www.instagram.com/mattmohaghegh/"><i class="fab fa-instagram"></i></a>
-            <a href="mailto:mattmohaghegh@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="tel:+15878324402"><i class="fas fa-mobile-alt"></i></a>
+            {% for person in persons %}
+            <a href="{{ person.linkedin }}"><i class="fa fa-linkedin-square"></i></a>
+            <a href="{{ person.instagram }}"><i class="fab fa-instagram"></i></a>
+            <a href="{{ person.email }}"><i class="fas fa-envelope"></i></a>
+            <a href="{{ person.phone_number }}"><i class="fas fa-mobile-alt"></i></a>
+            {% endfor %}
         </div>
         <form class="contact-form pd-top-30" method="POST">
             <h3 class="font-bold">I will read your messages!</h3>
