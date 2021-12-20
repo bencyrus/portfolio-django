@@ -1,0 +1,58 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+<section id="skill-management">
+    <div class="container pd-top-30">
+        <div class="row justify-content-center">
+            <h3 class="font-bold">Add Skill</h3>
+            <div class="col-12 pd-top-30 text-center">
+                <div class="content mg-10 bg-gray pd-20"><a href="{% url 'add-skill' %}" class="nav-link bg-gray">Add Skill</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="skills" class="pd-top-30">
+    <div class="container">
+        <h3 class="font-bold">Skills</h3>
+        <div class="skills-container">
+            <h5 class="font-bold">Detailed Skills</h5>
+            {% for detailed_skill in detailed_skills %}
+            <div class="skill-wrapper align-items-center">
+                {% if detailed_skill.logo %}
+                <img class="skill-logo" src="{{ detailed_skill.logo.url }}">
+                {% endif %}
+                <div class="skill-content">
+                    <h5>{{ detailed_skill.title }}</h5>
+                    <p>{{ detailed_skill.description }}</p>
+                    <div class="item-modifications">
+                        <a href="{% url 'edit-skill' detailed_skill.id %}" class="btn btn-secondary">Edit</a>
+                        <a href="{% url 'delete-skill' detailed_skill.id %}" class="btn btn-secondary">Delete</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <h5 class="pd-top-30 font-bold">Other Skills</h5>
+            <div class="other-skills-container">
+                {% for skill in skills %}
+                <div class="skill-content">
+                    <div class="skill-tag">
+                        <span>{{ skill.title }}</span>
+                    </div>
+                    <div class="item-modifications">
+                        <a href="{% url 'edit-skill' skill.id %}" class="btn btn-secondary">Edit</a>
+                        <a href="{% url 'delete-skill' skill.id %}" class="btn btn-secondary">Delete</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="icon"><img src="static/images/man-left-to-right.svg" alt=""></div>
+</section>
+
+
+{% endblock content %}

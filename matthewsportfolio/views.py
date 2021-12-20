@@ -45,6 +45,13 @@ def ProjectManagementPage(request):
     context = {'fields': fields, 'projects': projects}
     return render(request, 'base/project_management.html', context)
 
+def SkillManagementPage(request):
+    fields = Field.objects.all()
+    detailed_skills = Skill.objects.exclude(description='')
+    skills = Skill.objects.filter(description='')
+
+    context = {'fields': fields, 'detailed_skills': detailed_skills, 'skills': skills}
+    return render(request, 'base/skill_management.html', context)
 
 #--------------- User Profile views ---------------#
 def UserProfilePage(request):
@@ -128,7 +135,7 @@ def AddProject(request):
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('dashboard')
+            return redirect('project-management')
 
     context = {'form': form, 'form_title': form_title}
     return render(request, 'base/form.html', context)
@@ -137,7 +144,7 @@ def DeleteProject(request, pk):
     project = Project.objects.get(id=pk)
     project.delete()
 
-    return redirect('field-management')
+    return redirect('project-management')
 
 def EditProject(request, pk):
     project = Project.objects.get(id=pk)
@@ -148,7 +155,41 @@ def EditProject(request, pk):
         form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('project-management')
+
+    context = {'form': form, 'form_title': form_title}
+    return render(request, 'base/form.html', context)
+
+
+
+#--------------- Skill views ---------------#
+def AddSkill(request):
+    form = SkillForm()
+    form_title = 'Add Skill'
+    if request.method == 'POST':
+        form = SkillForm(request.POST, request.FILES)
+        form.save()
+        messages.success(request, 'Your skill was successfully added!')
+        return redirect('skill-management')
+    context = {'form': form, 'form_title': form_title}
+    return render(request, 'base/form.html', context)
+
+def DeleteSkill(request, pk):
+    skill = Skill.objects.get(id=pk)
+    skill.delete()
+
+    return redirect('skill-management')
+
+def EditSkill(request, pk):
+    skill = Skill.objects.get(id=pk)
+    form = SkillForm(instance=skill)
+    form_title = 'Edit Skill'
+
+    if request.method == 'POST':
+        form = FieldForm(request.POST, request.FILES, instance=skill)
+        if form.is_valid():
+            form.save()
+            return redirect('skill-management')
 
     context = {'form': form, 'form_title': form_title}
     return render(request, 'base/form.html', context)
@@ -168,19 +209,6 @@ def MessagePage(request, pk):
     message.save()
     context = {'message': message}
     return render(request, 'base/message.html', context)
-
-
-#--------------- Skill views ---------------#
-def AddSkill(request):
-    form = SkillForm()
-    form_title = 'Add Skill'
-    if request.method == 'POST':
-        form = SkillForm(request.POST, request.FILES)
-        form.save()
-        messages.success(request, 'Your skill was successfully added!')
-        return redirect('home')
-    context = {'form': form, 'form_title': form_title}
-    return render(request, 'base/form.html', context)
 
 
 #--------------- Endorsement views ---------------#
