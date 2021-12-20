@@ -38,6 +38,13 @@ def FieldManagementPage(request):
     context = {'fields': fields}
     return render(request, 'base/field_management.html', context)
 
+def ProjectManagementPage(request):
+    fields = Field.objects.all()
+    projects = Project.objects.all()
+
+    context = {'fields': fields, 'projects': projects}
+    return render(request, 'base/project_management.html', context)
+
 
 #--------------- User Profile views ---------------#
 def UserProfilePage(request):

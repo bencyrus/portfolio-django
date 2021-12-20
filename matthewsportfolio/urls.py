@@ -4,7 +4,10 @@ from . import views
 urlpatterns = [
     path('', views.HomePage, name="home"),
 
+    path('dashboard/', views.DashboardPage, name="dashboard"),
     path('edit-profile', views.UserProfilePage, name="edit-profile"),
+    path('field-management/', views.FieldManagementPage, name="field-management"),
+    path('project-management/', views.ProjectManagementPage, name="project-management"),
 
     path('field/<str:pk>/', views.FieldPage, name="field"),
     path('add-field', views.AddField, name="add-field"),
@@ -22,9 +25,6 @@ urlpatterns = [
     path('add-skill', views.AddSkill, name="add-skill"),
     path('add-endorsement', views.AddEndorsement, name="add-endorsement"),
 
-    path('dashboard/', views.DashboardPage, name="dashboard"),
-
-    path('field-management/', views.FieldManagementPage, name="field-management"),
 
     path('donation/', views.DonationPage, name="donation"),
 ]

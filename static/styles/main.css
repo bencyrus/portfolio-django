@@ -204,11 +204,12 @@ a {
 
 /** fields field-wrapper field-column **/
 .field-column {
-    width: 300px;
+    max-width: 300px;
     padding-top: 20px;
     text-align: center;
 }
 .field-column img {
+    width: 100%;
     max-width: 300px;
 }
 
