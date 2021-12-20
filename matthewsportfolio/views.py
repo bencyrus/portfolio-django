@@ -50,6 +50,7 @@ def ProjectManagementPage(request):
 def UserProfilePage(request):
     person = Person.objects.all().last()
     form = PersonForm()
+    form_title = 'Personal Profile'
 
     if request.method == 'POST':
         form = PersonForm(request.POST, request.FILES, instance=person)
@@ -57,8 +58,8 @@ def UserProfilePage(request):
             form.save()
             return redirect('dashboard')
 
-    context = {'form': form}
-    return render(request, 'base/person_form.html', context)
+    context = {'form': form, 'form_title': form_title}
+    return render(request, 'base/form.html', context)
     
 
 #--------------- Field views ---------------#
@@ -74,12 +75,13 @@ def AddField(request):
 
     if request.method == 'POST':
         form = FieldForm(request.POST, request.FILES)
+        form_title = 'Add Field'
         if form.is_valid():
             form.save()
             return redirect('field-management')
 
-    context = {'form': form}
-    return render(request, 'base/field_form.html', context)
+    context = {'form': form, 'form_title': form_title}
+    return render(request, 'base/form.html', context)
 
 def DeleteField(request, pk):
     field = Field.objects.get(id=pk)
@@ -90,6 +92,7 @@ def DeleteField(request, pk):
 def EditField(request, pk):
     field = Field.objects.get(id=pk)
     form = FieldForm(instance=field)
+    form_title = 'Edit Field'
 
     if request.method == 'POST':
         form = FieldForm(request.POST, request.FILES, instance=field)
@@ -97,8 +100,8 @@ def EditField(request, pk):
             form.save()
             return redirect('field-management')
 
-    context = {'form': form}
-    return render(request, 'base/field_form.html', context)
+    context = {'form': form, 'form_title': form_title}
+    return render(request, 'base/form.html', context)
 
 
 #--------------- Project views ---------------#
@@ -119,6 +122,7 @@ def ProjectPage(request, pk):
 
 def AddProject(request):
     form = ProjectForm()
+    form_title = 'Add Project'
 
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
@@ -126,8 +130,8 @@ def AddProject(request):
             form.save()
             return redirect('dashboard')
 
-    context = {'form': form}
-    return render(request, 'base/project_form.html', context)
+    context = {'form': form, 'form_title': form_title}
+    return render(request, 'base/form.html', context)
 
 def DeleteProject(request, pk):
     project = Project.objects.get(id=pk)
@@ -138,6 +142,7 @@ def DeleteProject(request, pk):
 def EditProject(request, pk):
     project = Project.objects.get(id=pk)
     form = ProjectForm(instance=project)
+    form_title = 'Edit Project'
 
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES, instance=project)
@@ -145,8 +150,8 @@ def EditProject(request, pk):
             form.save()
             return redirect('home')
 
-    context = {'form': form}
-    return render(request, 'base/project_form.html', context)
+    context = {'form': form, 'form_title': form_title}
+    return render(request, 'base/form.html', context)
 
 
 #--------------- Inbox views ---------------#
@@ -168,25 +173,27 @@ def MessagePage(request, pk):
 #--------------- Skill views ---------------#
 def AddSkill(request):
     form = SkillForm()
+    form_title = 'Add Skill'
     if request.method == 'POST':
         form = SkillForm(request.POST, request.FILES)
         form.save()
         messages.success(request, 'Your skill was successfully added!')
         return redirect('home')
-    context = {'form': form}
-    return render(request, 'base/skill_form.html', context)
+    context = {'form': form, 'form_title': form_title}
+    return render(request, 'base/form.html', context)
 
 
 #--------------- Endorsement views ---------------#
 def AddEndorsement(request):
     form = EndorsementForm()
+    form_title = 'Add Endorsement'
     if request.method == 'POST':
         form = EndorsementForm(request.POST)
         form.save()
         messages.success(request, 'Your Endorsement was successfully added!')
         return redirect('home')
-    context = {'form': form}
-    return render(request, 'base/endorsement_form.html', context)
+    context = {'form': form, 'form_title': form_title}
+    return render(request, 'base/form.html', context)
 
 
 #--------------- Donation views ---------------#
