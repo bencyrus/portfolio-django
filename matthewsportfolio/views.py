@@ -21,8 +21,8 @@ def HomePage(request):
     context = {'persons': persons, 'fields': fields, 'projects': projects, 'detailed_skills': detailed_skills, 'skills': skills, 'endorsements': endorsements, 'form': form}
     return render(request, 'base/home.html', context)
 
-def UserProfilePage(request, pk):
-    person = Person.objects.get(id=pk).last()
+def UserProfilePage(request):
+    person = Person.objects.all().last()
     form = PersonForm()
 
     if request.method == 'POST':
