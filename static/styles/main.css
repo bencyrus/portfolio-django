@@ -19,6 +19,9 @@ a {
 .font-bold {
     font-weight: bold;
 }
+.pd-20 {
+    padding: 20px;
+}
 .pd-top-30 {
     padding-top: 30px !important;
 }
@@ -31,8 +34,19 @@ a {
 .mg-top-10 {
     margin-top: 10px;
 }
-
-
+.mg-10 {
+    margin: 10px;
+}
+.num-label {
+    background-color: #a32222;
+    color: #fff;
+    padding: 8px 3px;
+    border-radius: 35%;
+}
+.bg-gray {
+    background-color: #62615c;
+    color: #fff !important;
+}
 
 
 /** --------------- Hero --------------- **/
