@@ -29,7 +29,11 @@
             <div class="project-column col-md-4">
                 <a href="{% url 'project' project.id %}"><img class="project-thumbnail" src="{{ project.thumbnail.url }}" alt="Project 1"></a>
                 <div class="project-body">
-                    <h6>{{ project.title }}</h6>   
+                    <h6>{{ project.title }}</h6>
+                    <div class="item-modifications">
+                        <a href="{% url 'edit-project' project.id %}" class="btn btn-secondary">Edit</a>
+                        <a href="{% url 'delete-project' project.id %}" class="btn btn-secondary">Delete</a>
+                    </div> 
                 </div>
             </div>
             {% endfor %}
