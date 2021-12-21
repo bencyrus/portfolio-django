@@ -30,10 +30,12 @@
                 <a href="{% url 'project' project.id %}"><img class="project-thumbnail" src="{{ project.thumbnail.url }}" alt="Project 1"></a>
                 <div class="project-body">
                     <h6>{{ project.title }}</h6>
+                    {% if request.user.is_authenticated %}
                     <div class="item-modifications">
                         <a href="{% url 'edit-project' project.id %}" class="btn edit-btn">Edit <span class="material-icons">edit</span></a>
                         <a href="{% url 'delete-project' project.id %}" class="btn delete-btn"><span class="material-icons">delete_forever</span></a>
                     </div>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
