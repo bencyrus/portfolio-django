@@ -78,10 +78,10 @@ def FieldPage(request, pk):
 
 def AddField(request):
     form = FieldForm()
-
+    form_title = 'Add Field'
+    
     if request.method == 'POST':
         form = FieldForm(request.POST, request.FILES)
-        form_title = 'Add Field'
         if form.is_valid():
             form.save()
             return redirect('field-management')
