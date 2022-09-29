@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4v4!3xto$s&@2f0tr(q9ug53yq4_(z)!^5fhm&3_q*o3z_0a72
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '*.bencyrus.me', 'http://bencyrus.me', 'https://bencyrus.me', 'www.bencyrus.me', 'https://www.bencyrus.me', 'https://web-production-a208.up.railway.app/']
+ALLOWED_HOSTS = ['127.0.0.1', 'https://bencyrus.me', 'http://bencyrus.me', 'https://www.bencyrus.me', 'www.bencyrus.me', 'https://www.bencyrus.me', 'bencyrus.me']
 CSRF_TRUSTED_ORIGINS = ['https://*.bencyrus.me','https://*.127.0.0.1']
 
 # Application definition
